@@ -1,0 +1,9 @@
+# 忽略所有 .pyc 文件
+*.pyc
+
+# 忽略虚拟环境目录
+venv/
+.idea/
+
+#匹配所有名为__pycache__的目录
+__pycache__/

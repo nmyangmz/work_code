@@ -1,0 +1,22 @@
+select count(1),count(disitnct assets_num)
+from (
+SELECT  t1.assets_num
+        ,t2.label
+	,t2.value
+FROM    (
+            SELECT  *
+            FROM    mn_ods.o_ams_sys_assets_df
+            WHERE   ds = '20240927'
+        ) t1
+JOIN    (
+            SELECT  *
+            FROM    mn_ods.o_ams_sys_dict_df
+            WHERE   ds = '20240927'
+            AND     type = 'manufacturer'
+            AND     company_id = '6000-20-13'
+        ) t2
+ON      t1.manufacturer = t2.value
+GROUP BY t1.assets_num
+         ,t2.label
+,t2.value
+) x1
